@@ -1,5 +1,7 @@
 @AGENTS.md
 
+Principles: [docs/agent-standard.md](docs/agent-standard.md). Repo-specific guidance is in AGENTS.md and below.
+
 <!-- nx configuration start-->
 <!-- Leave the start & end comments to automatically receive updates. -->
 
