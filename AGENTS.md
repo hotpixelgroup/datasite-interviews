@@ -40,3 +40,14 @@ Repo-specific setup, validation commands and constraints belong in a "Project sp
 - The `nx-generate` skill handles generator discovery internally - don't call nx_docs just to look up generator syntax
 
 <!-- nx configuration end-->
+
+## Agent working rules
+
+These rules apply to any AI agent working in this repo. Humans review and merge; agents never merge.
+
+- **Define done first.** Before changing code, state what "done" means: a new test that fails on the current code and passes after the change, the full suite green, and a diff limited to the files or directories the task names. "Looks good" or "should pass" is not evidence; tests and CI are.
+- **Stop on repeat failures.** If the same failure comes back twice, stop and report what was expected, what happened and what was already tried. Don't keep retrying the same approach.
+- **Keep a dead-ends note.** For work longer than one sitting, keep a short note (goal, what was tried and the result, what is known, next step, files never to touch) so a resumed run doesn't repeat a dead end.
+- **Gate by how hard the change is to undo.** Docs, tests and single-function fixes can ship once CI is green and a human has approved the PR. Shared helpers, schemas, auth, CI workflows and deploy changes need a human to read the diff. Migrations, deletes, sent messages and anything that spends money need explicit human approval first.
+- **Only parallelize independent work,** and don't re-run work that already passed its checks.
+- **Turn repeated mistakes into rules.** When a failure happens twice, add a rule or a required check here instead of correcting it by hand each time.
